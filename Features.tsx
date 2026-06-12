@@ -122,7 +122,9 @@ export const Features: React.FC = () => {
                 <p className="text-base italic text-foreground/95 leading-relaxed">{active.sensoryText}</p>
               </div>
 
-              <p className="text-base text-foreground/85 italic leading-relaxed">「{active.quote}」</p>
+              <p className="text-base text-foreground font-medium italic leading-relaxed pl-4 border-l-2 border-accent/50">
+                「{active.quote}」
+              </p>
             </div>
           </div>
 
