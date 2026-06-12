@@ -45,7 +45,7 @@ body {
 }
 
 .section-subtitle {
-  @apply text-lg text-muted-foreground mb-8;
+  @apply text-lg text-foreground/85 font-medium mb-8;
 }
 
 .backdrop-blur-nav {

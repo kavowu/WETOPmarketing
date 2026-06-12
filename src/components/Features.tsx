@@ -118,12 +118,12 @@ export const Features: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-accent/5 border border-accent/20 rounded-lg p-4 mb-4">
-                <p className="text-xs text-accent font-semibold mb-1 uppercase tracking-wider">感官化體驗</p>
-                <p className="text-sm italic text-foreground/90">{active.sensoryText}</p>
+              <div className="bg-accent/5 border border-accent/20 rounded-xl p-5 mb-6">
+                <p className="text-xs text-accent font-semibold mb-2 uppercase tracking-wider">感官化體驗</p>
+                <p className="text-base italic text-foreground/95 leading-relaxed">{active.sensoryText}</p>
               </div>
 
-              <p className="text-sm text-muted-foreground italic">「{active.quote}」</p>
+              <p className="text-base text-foreground/85 italic leading-relaxed">「{active.quote}」</p>
             </div>
           </div>
 
@@ -136,7 +136,7 @@ export const Features: React.FC = () => {
                 className={`relative shrink-0 w-24 sm:w-28 lg:w-auto lg:shrink rounded-xl overflow-hidden border-2 transition-all duration-300 group snap-center ${
                   i === activeIndex
                     ? 'border-accent shadow-lg shadow-accent/20 scale-105'
-                    : 'border-border hover:border-accent/50 opacity-60 hover:opacity-100'
+                    : 'border-border hover:border-accent/50 opacity-80 hover:opacity-100'
                 }`}
               >
                 <img
@@ -145,7 +145,7 @@ export const Features: React.FC = () => {
                   className="w-full h-20 sm:h-24 object-cover transition-transform duration-500 ease-out group-hover:scale-110"
                 />
                 <div className={`absolute inset-0 flex flex-col items-center justify-end pb-2 transition-all duration-300 ${
-                  i === activeIndex ? 'bg-background/40' : 'bg-background/65 group-hover:bg-background/40'
+                  i === activeIndex ? 'bg-background/30' : 'bg-background/45 group-hover:bg-background/25'
                 }`}>
                   <div className={`mb-1 transition-colors ${i === activeIndex ? 'text-accent' : 'text-foreground'}`}>
                     {f.icon}

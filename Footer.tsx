@@ -12,7 +12,7 @@ export const Footer: React.FC = () => {
               <img src={wetopLogo} alt="WETOP Logo" className="w-10 h-10 object-contain" />
               <span className="font-bold text-lg">WETOP</span>
             </div>
-            <p className="text-muted-foreground text-sm">
+            <p className="text-foreground/75 text-sm">
               重建大自然自潔力的生態系統
             </p>
           </div>
@@ -24,7 +24,7 @@ export const Footer: React.FC = () => {
               <li>
                 <a
                   href="#pain-points"
-                  className="text-muted-foreground hover:text-accent transition-colors text-sm"
+                  className="text-foreground/75 hover:text-accent transition-colors text-sm"
                 >
                   環境威脅
                 </a>
@@ -32,7 +32,7 @@ export const Footer: React.FC = () => {
               <li>
                 <a
                   href="#comparison"
-                  className="text-muted-foreground hover:text-accent transition-colors text-sm"
+                  className="text-foreground/75 hover:text-accent transition-colors text-sm"
                 >
                   破題定位
                 </a>
@@ -40,7 +40,7 @@ export const Footer: React.FC = () => {
               <li>
                 <a
                   href="#features"
-                  className="text-muted-foreground hover:text-accent transition-colors text-sm"
+                  className="text-foreground/75 hover:text-accent transition-colors text-sm"
                 >
                   五大特性
                 </a>
@@ -48,7 +48,7 @@ export const Footer: React.FC = () => {
               <li>
                 <a
                   href="#sensory"
-                  className="text-muted-foreground hover:text-accent transition-colors text-sm"
+                  className="text-foreground/75 hover:text-accent transition-colors text-sm"
                 >
                   感官證據
                 </a>
@@ -75,11 +75,19 @@ export const Footer: React.FC = () => {
             >
               www.pict-inside.com
             </a>
+            <a
+              href="https://www.rgf-inside.com/index.php"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent hover:text-accent/80 transition-colors text-sm"
+            >
+              www.rgf-inside.com
+            </a>
           </div>
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-border pt-8 text-center text-muted-foreground text-sm">
+        <div className="border-t border-border pt-8 text-center text-foreground/50 text-sm">
           <p>© 2024 WETOP. All rights reserved.</p>
         </div>
       </div>

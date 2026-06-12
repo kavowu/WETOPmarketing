@@ -1,129 +1,193 @@
+import { useState } from 'react';
+import { Shield, Droplets, Wind, Zap, Leaf, X } from 'lucide-react';
+import imgFangYi from './src/assets/行銷-防疫_0.png';
+import imgFangMei from './src/assets/行銷-防霉_0.png';
+import imgQuYiWei from './src/assets/行銷-去異味_0.png';
+import imgJiangWeiChen from './src/assets/行銷-降微塵_0.png';
+import imgJieNeng from './src/assets/行銷-節能_0.png';
 
-import { Shield, Droplets, Wind, Zap, Leaf } from 'lucide-react';
-
-interface FeatureCard {
+interface FeatureItem {
   icon: React.ReactNode;
+  image: string;
   title: string;
-  notLabel: string;
   notText: string;
-  isLabel: string;
   isText: string;
   sensoryText: string;
   quote: string;
 }
 
 export const Features: React.FC = () => {
-  const features: FeatureCard[] = [
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+
+  const features: FeatureItem[] = [
     {
-      icon: <Shield className="w-8 h-8" />,
-      title: '防疫',
-      notLabel: '不是 A',
-      notText: '把病毒抓進濾網的被動機器',
-      isLabel: '而是 B',
-      isText: '主動分解空氣與表面病毒的生態守護系統',
-      sensoryText: '從「家裡隱隱有悶悶的生物味」→ 一進門就聞得出來乾淨、安全，摸任何地方都安心',
-      quote: '病毒不只透過空氣傳播。WETOP 讓病毒在孩子的指尖碰到之前，就已經被滅活。',
-    },
-    {
-      icon: <Droplets className="w-8 h-8" />,
+      icon: <Droplets className="w-6 h-6" />,
+      image: imgFangMei,
       title: '防霉',
-      notLabel: '不是 A',
       notText: '容易發霉的微米級過濾器',
-      isLabel: '而是 B',
       isText: '透過表面脫水與主動分解，斷絕塵蟎黴菌食物鏈',
       sensoryText: '從「隱隱潮濕霉味」→ 聞不到霉味、摸起來乾爽，像被太陽曬過的自然狀態',
       quote: '沒有黴菌，就沒有塵蟎。你聞不到霉味的那一刻，過敏源頭已經被徹底切斷。',
     },
     {
-      icon: <Wind className="w-8 h-8" />,
+      icon: <Shield className="w-6 h-6" />,
+      image: imgFangYi,
+      title: '防疫',
+      notText: '把病毒抓進濾網的被動機器',
+      isText: '主動分解空氣與表面病毒的生態守護系統',
+      sensoryText: '從「家裡隱隱有悶悶的生物味」→ 一進門就聞得出來乾淨、安全，摸任何地方都安心',
+      quote: '病毒不只透過空氣傳播。WETOP 讓病毒在孩子的指尖碰到之前，就已經被滅活。',
+    },
+    {
+      icon: <Wind className="w-6 h-6" />,
+      image: imgQuYiWei,
       title: '去異味',
-      notLabel: '不是 A',
       notText: '掩蓋異味的化學芳香劑',
-      isLabel: '而是 B',
       isText: '直接瓦解微生物與化學分子的警報解除器',
       sensoryText: '從「回家總有股怪味」→ 推門就聞到真正乾淨的家味，鼻子終於可以放心',
       quote: '你聞不到任何味道——這就是 WETOP 給你的最高安全感。不是掩蓋，是徹底消失。',
     },
     {
-      icon: <Zap className="w-8 h-8" />,
+      icon: <Zap className="w-6 h-6" />,
+      image: imgJiangWeiChen,
       title: '降微塵',
-      notLabel: '不是 A',
       notText: '跟灰塵賽跑的被動過濾器',
-      isLabel: '而是 B',
       isText: '主動處理產生源、讓空氣活起來的生態循環系統',
       sensoryText: '從「空氣悶悶厚重」→ 聞起來更輕盈、清澈，像雨後山林',
       quote: '你看不到 PM2.5，但你的鼻子聞得到「灰塵味真的不見了」。',
     },
     {
-      icon: <Leaf className="w-8 h-8" />,
+      icon: <Leaf className="w-6 h-6" />,
+      image: imgJieNeng,
       title: '節能',
-      notLabel: '不是 A',
       notText: '製造高昂電費與耗材無底洞的家電',
-      isLabel: '而是 B',
       isText: '解除化學熱負荷、幫助空調顯著節能的基礎建設',
       sensoryText: '從「開了怕貴」→ 24 小時開著卻幾乎無感電費，隨時聞到被守護的乾淨空氣',
       quote: '冷氣調高 3 度，你不只省電費——你還聞得到，空氣變得更乾淨、更舒服。',
     },
   ];
 
+  const active = features[activeIndex];
+
   return (
     <section id="features" className="py-20 px-4 bg-background">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <h2 className="section-title">五大特性：從剛需到感官化價值</h2>
           <p className="section-subtitle">不是數據，而是你能聞得出來的差異</p>
         </div>
 
-        {/* Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              className="card-hover p-6 rounded-lg bg-card border border-border flex flex-col"
-            >
-              {/* Image placeholder */}
-              <div className="w-full h-40 rounded-lg mb-4 bg-muted/20 border border-border/30 flex items-center justify-center">
-                <span className="text-xs text-muted-foreground">圖片待放置</span>
-              </div>
+        {/* Dashboard Layout */}
+        <div className="flex flex-col gap-4">
 
-              {/* Icon and title */}
-              <div className="flex items-center gap-3 mb-4">
-                <div className="text-accent">{feature.icon}</div>
-                <h3 className="text-xl font-bold text-foreground">{feature.title}</h3>
-              </div>
-
-              {/* Not section */}
-              <div className="mb-4 pb-4 border-b border-border/30">
-                <p className="text-xs text-muted-foreground font-semibold mb-2 uppercase">
-                  {feature.notLabel}
-                </p>
-                <p className="text-sm text-foreground">{feature.notText}</p>
-              </div>
-
-              {/* Is section */}
-              <div className="mb-4 pb-4 border-b border-border/30">
-                <p className="text-xs text-accent font-semibold mb-2 uppercase">
-                  {feature.isLabel}
-                </p>
-                <p className="text-sm font-bold text-foreground">{feature.isText}</p>
-              </div>
-
-              {/* Sensory experience */}
-              <div className="mb-4 pb-4 border-b border-border/30 bg-accent/5 rounded p-3">
-                <p className="text-xs text-accent font-semibold mb-2 uppercase">感官化體驗</p>
-                <p className="text-sm italic text-foreground">{feature.sensoryText}</p>
-              </div>
-
-              {/* Quote */}
-              <div>
-                <p className="text-xs text-muted-foreground font-semibold mb-2 uppercase">金句</p>
-                <p className="text-sm italic text-foreground">"{feature.quote}"</p>
-              </div>
+          {/* Main Display */}
+          <div className="rounded-2xl overflow-hidden border border-border bg-card grid grid-cols-1 lg:grid-cols-2">
+            {/* Left: Image */}
+            <div className="flex items-center justify-center bg-card p-4 overflow-hidden">
+              <img
+                key={activeIndex}
+                src={active.image}
+                alt={active.title}
+                className="w-full max-h-[240px] sm:max-h-[360px] object-contain transition-all duration-500 ease-out hover:scale-105 cursor-zoom-in"
+                onClick={() => setIsLightboxOpen(true)}
+              />
             </div>
-          ))}
+
+            {/* Right: Content */}
+            <div className="p-8 flex flex-col justify-center border-t lg:border-t-0 lg:border-l border-border">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="text-accent p-2 bg-accent/10 rounded-lg">{active.icon}</div>
+                <h3 className="text-3xl font-bold text-foreground">{active.title}</h3>
+              </div>
+
+              <div className="space-y-4 mb-6">
+                <div className="flex gap-3 items-start">
+                  <span className="text-xs font-bold text-muted-foreground bg-muted/20 px-2 py-1 rounded whitespace-nowrap mt-0.5">
+                    不是
+                  </span>
+                  <p className="text-sm text-foreground/80">{active.notText}</p>
+                </div>
+                <div className="flex gap-3 items-start">
+                  <span className="text-xs font-bold text-accent bg-accent/10 px-2 py-1 rounded whitespace-nowrap mt-0.5">
+                    而是
+                  </span>
+                  <p className="text-sm font-bold text-foreground">{active.isText}</p>
+                </div>
+              </div>
+
+              <div className="bg-accent/5 border border-accent/20 rounded-xl p-5 mb-6">
+                <p className="text-xs text-accent font-semibold mb-2 uppercase tracking-wider">感官化體驗</p>
+                <p className="text-base italic text-foreground/95 leading-relaxed">{active.sensoryText}</p>
+              </div>
+
+              <p className="text-base text-foreground/85 italic leading-relaxed">「{active.quote}」</p>
+            </div>
+          </div>
+
+          {/* Thumbnail Row */}
+          <div className="flex overflow-x-auto lg:grid lg:grid-cols-5 gap-3 pb-4 scrollbar-none snap-x snap-mandatory">
+            {features.map((f, i) => (
+              <button
+                key={i}
+                onClick={() => setActiveIndex(i)}
+                className={`relative shrink-0 w-24 sm:w-28 lg:w-auto lg:shrink rounded-xl overflow-hidden border-2 transition-all duration-300 group snap-center ${
+                  i === activeIndex
+                    ? 'border-accent shadow-lg shadow-accent/20 scale-105'
+                    : 'border-border hover:border-accent/50 opacity-80 hover:opacity-100'
+                }`}
+              >
+                <img
+                  src={f.image}
+                  alt={f.title}
+                  className="w-full h-20 sm:h-24 object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+                />
+                <div className={`absolute inset-0 flex flex-col items-center justify-end pb-2 transition-all duration-300 ${
+                  i === activeIndex ? 'bg-background/30' : 'bg-background/45 group-hover:bg-background/25'
+                }`}>
+                  <div className={`mb-1 transition-colors ${i === activeIndex ? 'text-accent' : 'text-foreground'}`}>
+                    {f.icon}
+                  </div>
+                  <span className={`text-[10px] sm:text-xs font-bold ${i === activeIndex ? 'text-accent' : 'text-foreground'}`}>
+                    {f.title}
+                  </span>
+                </div>
+                {i === activeIndex && (
+                  <div className="absolute top-2 right-2 w-2 h-2 rounded-full bg-accent animate-pulse" />
+                )}
+              </button>
+            ))}
+          </div>
+
         </div>
       </div>
+
+      {/* Lightbox Modal */}
+      {isLightboxOpen && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-md animate-fade-in cursor-zoom-out"
+          onClick={() => setIsLightboxOpen(false)}
+        >
+          {/* Close button */}
+          <button
+            className="absolute top-4 right-4 text-white/75 hover:text-accent p-2 transition-colors z-[110]"
+            onClick={() => setIsLightboxOpen(false)}
+          >
+            <X size={32} />
+          </button>
+          
+          {/* Image container */}
+          <div className="max-w-[95%] max-h-[95%] flex items-center justify-center p-4">
+            <img
+              src={active.image}
+              alt={active.title}
+              className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl animate-scale-up"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </div>
+        </div>
+      )}
     </section>
   );
 };

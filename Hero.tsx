@@ -1,5 +1,5 @@
 
-import heroBg from './src/assets/wetop_hero_background.png';
+import heroBg from './src/assets/室內淨化照片-1_0.jpg';
 
 export const Hero: React.FC = () => {
   return (
@@ -9,7 +9,7 @@ export const Hero: React.FC = () => {
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroBg})` }}
       />
-      <div className="absolute inset-0 bg-background/70 z-0" />
+      <div className="absolute inset-0 bg-background/45 z-0" />
       
       {/* Hero content */}
       <div className="relative z-10 max-w-4xl mx-auto px-4 py-20 text-center">

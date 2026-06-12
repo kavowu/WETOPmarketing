@@ -37,8 +37,8 @@ export const Comparison: React.FC = () => {
             </h3>
             <ul className="space-y-4">
               {traditionalPoints.map((point, index) => (
-                <li key={index} className="flex items-start gap-3 text-muted-foreground">
-                  <span className="text-muted-foreground mt-1">•</span>
+                <li key={index} className="flex items-start gap-3 text-foreground/80">
+                  <span className="text-foreground/40 mt-1">•</span>
                   <span>{point}</span>
                 </li>
               ))}
@@ -63,7 +63,7 @@ export const Comparison: React.FC = () => {
 
         {/* Core Essence Box */}
         <div className="p-8 rounded-lg bg-card border-2 border-accent text-center">
-          <p className="text-sm font-semibold text-muted-foreground mb-3 uppercase tracking-wider">
+          <p className="text-sm font-semibold text-foreground/70 mb-3 uppercase tracking-wider">
             WETOP 的本質
           </p>
           <h3 className="text-3xl md:text-4xl font-bold text-accent mb-4 glow-text-sm">
