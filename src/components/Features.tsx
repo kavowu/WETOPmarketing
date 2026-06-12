@@ -85,12 +85,12 @@ export const Features: React.FC = () => {
           {/* Main Display */}
           <div className="rounded-2xl overflow-hidden border border-border bg-card grid grid-cols-1 lg:grid-cols-2">
             {/* Left: Image */}
-            <div className="flex items-center justify-center bg-card p-4">
+            <div className="flex items-center justify-center bg-card p-4 overflow-hidden">
               <img
                 key={activeIndex}
                 src={active.image}
                 alt={active.title}
-                className="w-full max-h-[240px] sm:max-h-[360px] object-contain transition-opacity duration-500"
+                className="w-full max-h-[240px] sm:max-h-[360px] object-contain transition-all duration-500 ease-out hover:scale-105"
               />
             </div>
 
@@ -140,7 +140,7 @@ export const Features: React.FC = () => {
                 <img
                   src={f.image}
                   alt={f.title}
-                  className="w-full h-20 sm:h-24 object-cover"
+                  className="w-full h-20 sm:h-24 object-cover transition-transform duration-500 ease-out group-hover:scale-110"
                 />
                 <div className={`absolute inset-0 flex flex-col items-center justify-end pb-2 transition-all duration-300 ${
                   i === activeIndex ? 'bg-background/40' : 'bg-background/65 group-hover:bg-background/40'
