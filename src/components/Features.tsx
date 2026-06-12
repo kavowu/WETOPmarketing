@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Shield, Droplets, Wind, Zap, Leaf } from 'lucide-react';
+import { Shield, Droplets, Wind, Zap, Leaf, X } from 'lucide-react';
 import imgFangYi from '../assets/行銷-防疫_0.png';
 import imgFangMei from '../assets/行銷-防霉_0.png';
 import imgQuYiWei from '../assets/行銷-去異味_0.png';
@@ -19,6 +19,7 @@ interface FeatureItem {
 
 export const Features: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
   const features: FeatureItem[] = [
     {
@@ -90,7 +91,8 @@ export const Features: React.FC = () => {
                 key={activeIndex}
                 src={active.image}
                 alt={active.title}
-                className="w-full max-h-[240px] sm:max-h-[360px] object-contain transition-all duration-500 ease-out hover:scale-105"
+                className="w-full max-h-[240px] sm:max-h-[360px] object-contain transition-all duration-500 ease-out hover:scale-105 cursor-zoom-in"
+                onClick={() => setIsLightboxOpen(true)}
               />
             </div>
 
@@ -161,6 +163,32 @@ export const Features: React.FC = () => {
 
         </div>
       </div>
+
+      {/* Lightbox Modal */}
+      {isLightboxOpen && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-md animate-fade-in cursor-zoom-out"
+          onClick={() => setIsLightboxOpen(false)}
+        >
+          {/* Close button */}
+          <button
+            className="absolute top-4 right-4 text-white/75 hover:text-accent p-2 transition-colors z-[110]"
+            onClick={() => setIsLightboxOpen(false)}
+          >
+            <X size={32} />
+          </button>
+          
+          {/* Image container */}
+          <div className="max-w-[95%] max-h-[95%] flex items-center justify-center p-4">
+            <img
+              src={active.image}
+              alt={active.title}
+              className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl animate-scale-up"
+              onClick={(e) => e.stopPropagation()} // Prevent closing when clicking the image
+            />
+          </div>
+        </div>
+      )}
     </section>
   );
 };
