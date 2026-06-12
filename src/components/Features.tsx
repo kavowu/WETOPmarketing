@@ -90,7 +90,7 @@ export const Features: React.FC = () => {
                 key={activeIndex}
                 src={active.image}
                 alt={active.title}
-                className="w-full max-h-[360px] object-contain transition-opacity duration-500"
+                className="w-full max-h-[240px] sm:max-h-[360px] object-contain transition-opacity duration-500"
               />
             </div>
 
@@ -126,12 +126,12 @@ export const Features: React.FC = () => {
           </div>
 
           {/* Thumbnail Row */}
-          <div className="grid grid-cols-5 gap-3">
+          <div className="flex overflow-x-auto lg:grid lg:grid-cols-5 gap-3 pb-4 scrollbar-none snap-x snap-mandatory">
             {features.map((f, i) => (
               <button
                 key={i}
                 onClick={() => setActiveIndex(i)}
-                className={`relative rounded-xl overflow-hidden border-2 transition-all duration-300 group ${
+                className={`relative shrink-0 w-24 sm:w-28 lg:w-auto lg:shrink rounded-xl overflow-hidden border-2 transition-all duration-300 group snap-center ${
                   i === activeIndex
                     ? 'border-accent shadow-lg shadow-accent/20 scale-105'
                     : 'border-border hover:border-accent/50 opacity-60 hover:opacity-100'
@@ -140,7 +140,7 @@ export const Features: React.FC = () => {
                 <img
                   src={f.image}
                   alt={f.title}
-                  className="w-full h-24 object-cover"
+                  className="w-full h-20 sm:h-24 object-cover"
                 />
                 <div className={`absolute inset-0 flex flex-col items-center justify-end pb-2 transition-all duration-300 ${
                   i === activeIndex ? 'bg-background/40' : 'bg-background/65 group-hover:bg-background/40'
@@ -148,7 +148,7 @@ export const Features: React.FC = () => {
                   <div className={`mb-1 transition-colors ${i === activeIndex ? 'text-accent' : 'text-foreground'}`}>
                     {f.icon}
                   </div>
-                  <span className={`text-xs font-bold ${i === activeIndex ? 'text-accent' : 'text-foreground'}`}>
+                  <span className={`text-[10px] sm:text-xs font-bold ${i === activeIndex ? 'text-accent' : 'text-foreground'}`}>
                     {f.title}
                   </span>
                 </div>

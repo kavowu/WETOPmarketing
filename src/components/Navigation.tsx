@@ -50,20 +50,28 @@ export const Navigation: React.FC = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden absolute top-16 left-0 right-0 bg-card border-b border-border">
-          <div className="flex flex-col gap-4 p-4">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-foreground hover:text-accent transition-colors text-sm font-medium"
-                onClick={() => setIsOpen(false)}
-              >
-                {link.label}
-              </a>
-            ))}
+        <>
+          {/* Backdrop overlay */}
+          <div
+            className="fixed inset-0 bg-background/60 backdrop-blur-sm z-40 md:hidden"
+            onClick={() => setIsOpen(false)}
+          />
+          <div className="md:hidden absolute top-16 left-0 right-0 bg-card border-b border-border z-50 animate-slide-down">
+            <div className="flex flex-col p-2">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-foreground hover:text-accent transition-colors text-base font-bold py-4 px-4 border-b border-border/30 last:border-b-0 flex items-center justify-between"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <span>{link.label}</span>
+                  <span className="text-accent text-xs">➔</span>
+                </a>
+              ))}
+            </div>
           </div>
-        </div>
+        </>
       )}
     </nav>
   );

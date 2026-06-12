@@ -23,7 +23,7 @@ export const Comparison: React.FC = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="section-title">
-            WETOP 環境淨化，不是傳統空氣清淨而是<br />
+            WETOP 環境淨化，不是傳統空氣清淨而是<br className="hidden md:inline" />
             <span className="text-accent">空間健康防禦系統</span>
           </h2>
         </div>
