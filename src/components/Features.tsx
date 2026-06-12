@@ -104,17 +104,17 @@ export const Features: React.FC = () => {
               </div>
 
               <div className="space-y-4 mb-6">
-                <div className="flex gap-3 items-start">
-                  <span className="text-xs font-bold text-muted-foreground bg-muted/20 px-2 py-1 rounded whitespace-nowrap mt-0.5">
+                <div className="flex gap-4 items-start">
+                  <span className="text-sm font-bold text-foreground/60 bg-white/10 px-2.5 py-1 rounded whitespace-nowrap mt-0.5">
                     不是
                   </span>
-                  <p className="text-sm text-foreground/80">{active.notText}</p>
+                  <p className="text-base text-foreground/85 leading-relaxed font-normal">{active.notText}</p>
                 </div>
-                <div className="flex gap-3 items-start">
-                  <span className="text-xs font-bold text-accent bg-accent/10 px-2 py-1 rounded whitespace-nowrap mt-0.5">
+                <div className="flex gap-4 items-start">
+                  <span className="text-sm font-bold text-accent bg-accent/15 px-2.5 py-1 rounded whitespace-nowrap mt-0.5">
                     而是
                   </span>
-                  <p className="text-sm font-bold text-foreground">{active.isText}</p>
+                  <p className="text-lg font-bold text-foreground leading-relaxed">{active.isText}</p>
                 </div>
               </div>
 
